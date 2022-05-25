@@ -458,8 +458,8 @@
                             </div>
                         </div>
                         <div class="form-block w-form">
-                            <form id="gform" name="wf-form-Contact-Form" data-name="Contact Form"
-                                method="post" action="https://script.google.com/macros/s/AKfycbw7LHF0_FhDowd0jovh2OFFeO3ZxdQKalRxLVSvww/exec">
+                            <form id="submit-form" name="wf-form-Contact-Form" data-name="Contact Form"
+                                 action="">
                                 <div class="form-grid">
                                     <div id="w-node-_7e2edfe3-3944-2ba0-6656-871ae44718d6-af9b3b48"><label for="Name"
                                             class="field-label-form">Name<span class="color">*</span></label><input
@@ -537,6 +537,24 @@
     <script src="https://assets.website-files.com/5ff83c78cbf86736679b3b47/js/webflow.2659a887f.js"
         type="text/javascript"></script>
     <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+    <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbw7LHF0_FhDowd0jovh2OFFeO3ZxdQKalRxLVSvww/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
